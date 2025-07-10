@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>X-S.H.O.T.S Network</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/rusor.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #fff;
+    }
+
+    /* NAVBAR */
+    nav {
+      width: 100%;
+      padding: 15px 30px;
+      background: rgba(15, 15, 15, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(5, 199, 255, 0.3);
+      box-shadow: 0 0 15px #05C7FF;
+      opacity: 0;
+      transform: translateX(50px);
+      animation: fadeInRight 1.5s ease forwards;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: 700;
+      color: #05C7FF;
+      text-shadow: 0 0 10px #05C7FF;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: #eee;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #05C7FF;
+      box-shadow: 0 0 5px #05C7FF;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #05C7FF;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .burger div {
+      width: 28px;
+      height: 3px;
+      background: #05C7FF;
+      border-radius: 3px;
+      box-shadow: 0 0 5px #05C7FF;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.95);
+        border: 1px solid #05C7FF;
+        box-shadow: 0 0 10px #05C7FF;
+        flex-direction: column;
+        padding: 15px;
+        display: none;
+        border-radius: 10px;
+      }
+
+      .nav-links a {
+        padding: 10px 0;
+      }
+
+      .burger {
+        display: flex;
+      }
+    }
+
+    /* SECTION HOME */
+#home {
+  height: 100vh;
+  background: url('images/home.jpg') no-repeat center center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 20px;
+  position: relative; /* Supaya gradient bisa absolute di dalamnya */
+}
+
+
+.home-content {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.507);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #05C7FF;
+  max-width: 800px;
+  margin-left: 30px;
+  margin-top: 80px; /* Geser ke bawah */
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeInRight 1.5s ease forwards;
+}
+
+.home-content h4 {
+  color: #05C7FF;
+  text-shadow: 0 0 8px #05C7FF;
+  margin-bottom: 10px;
+}
+
+.home-content h1 {
+  color: #fff;
+  font-size: 2.8em;
+  text-shadow: 0 0 10px #05C7FF;
+  margin-bottom: 20px;
+}
+
+.home-content p {
+  color: #ccc;
+  max-width: 100%;
+  margin-bottom: 30px;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.read-more {
+  display: inline-block;
+  padding: 14px 30px;
+  color: #05C7FF;
+  border: 2px solid #05C7FF;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px #05C7FF;
+}
+
+.read-more:hover {
+  background: #05C7FF;
+  color: #000;
+  box-shadow: 0 0 20px #05C7FF;
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.gradient-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Atur tinggi gradasinya */
+  background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, #0a0a0a 100%);
+  pointer-events: none;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .home-content {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 60px;
+    padding: 25px;
+  }
+
+  .home-content h1 {
+    font-size: 1.8em;
+  }
+
+  .home-content p {
+    font-size: 1em;
+  }
+
+  .read-more {
+    padding: 12px 20px;
+    font-size: 0.9em;
+  }
+}
+
+
+
+
+#services {
+  padding: 100px 20px;
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: center; /* Semua item selalu center, termasuk jika ganjil */
+}
+
+.service-item {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #05C7FF;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeInRight 1.2s ease forwards;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 300px; /* Tetap konsisten ukuran card */
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #05C7FF;
+}
+
+.service-item h3 {
+  color: #05C7FF;
+  text-shadow: 0 0 8px #05C7FF;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.service-item p {
+  color: #ccc;
+  line-height: 1.6;
+  font-size: 1em;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+
+
+
+#about {
+  padding: 100px 20px;
+  background: linear-gradient(180deg, #0a0a0a 0%, #031e2f 50%, #000000 100%);
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 30px #05C7FF;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  /* Bentuk trapezoid futuristik */
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+  border: 2px solid #05C7FF;
+}
+
+.about-container h2 {
+  color: #05C7FF;
+  font-size: 2.2em;
+  margin-bottom: 25px;
+  text-align: center;
+  text-shadow: 0 0 10px #05C7FF;
+}
+
+.about-container p {
+  color: #ccc;
+  line-height: 1.8;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); /* fallback bentuk biasa di mobile biar rapi */
+  }
+
+  .about-container h2 {
+    font-size: 1.8em;
+  }
+
+  .about-container p {
+    font-size: 1em;
+  }
+}
+
+
+
+
+#team {
+  padding: 100px 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(3, 30, 47, 0) 0%,
+    #031e2f 10%,
+    #021c29 30%,
+    #001524 50%,
+    #000b18 70%,
+    #000000 100%
+  );
+  text-align: center;
+  position: relative;
+}
+
+.team-container {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-container h2 {
+  color: #05C7FF;
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  text-shadow: 0 0 10px #05C7FF;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.team-member {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #05C7FF;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 20px #05C7FF;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px #05C7FF;
+}
+
+
+.team-member img {
+  width: 100%;
+  border-radius: 0; /* biar gambar ikut clip-path bentuk */
+  clip-path: inherit;
+  margin-bottom: 15px;
+}
+
+
+.team-member h3 {
+  color: #05C7FF;
+  margin: 10px 0 5px;
+}
+
+.team-member p {
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.telegram-button {
+  position: relative;
+  display: inline-block;
+  padding: 8px 15px;
+  background: #05C7FF;
+  color: #000;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #05C7FF;
+  overflow: hidden;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.telegram-button::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(5,199,255,0.5), transparent);
+  transition: left 0.3s;
+}
+
+.telegram-button:hover::before {
+  left: 100%;
+}
+
+.telegram-button:hover {
+  background: #000;
+  color: #05C7FF;
+  box-shadow: 0 0 20px #05C7FF, 0 0 40px #05C7FF;
+}
+
+
+@media (max-width: 768px) {
+  .team-member {
+    width: 100%;
+  }
+}
+
+
+
+
+
+#resources {
+  padding: 100px 20px;
+  background: linear-gradient(
+    180deg,
+    #000b18 0%,       /* warna akhir Our Team, biar nyambung */
+    #001524 30%,
+    #021c29 60%,
+    #031e2f 90%,
+    #000000 100%
+  );
+  text-align: center;
+  position: relative;
+}
+
+#resources h2 {
+  color: #05C7FF;
+  font-size: 2.2em;
+  text-shadow: 0 0 10px #05C7FF;
+  margin-bottom: 40px;
+}
+
+
+.resources-container {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.resource-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.resource-item {
+  position: relative;
+  width: 900px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 30px #05C7FF inset, 0 0 40px #05C7FF;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.resource-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 2px solid #05C7FF;
+  clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 88%, 88% 100%, 12% 100%, 0% 88%, 0% 12%);
+  pointer-events: none;
+  box-shadow: 0 0 20px #05C7FF;
+}
+
+.resource-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.resource-item:nth-child(1) { animation-delay: 0s; }
+.resource-item:nth-child(2) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .resource-item {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+#faq {
+  position: relative;
+  padding: 100px 20px;
+  background: #000;
+  overflow: hidden;
+}
+
+#faq h2 {
+  color: #05C7FF;
+  font-size: 2.2em;
+  text-shadow: 0 0 10px #05C7FF;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(5, 199, 255, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.faq-item:nth-child(2) { animation-delay: 0.3s; }
+.faq-item:nth-child(3) { animation-delay: 0.6s; }
+
+.faq-item h3 {
+  color: #05C7FF;
+  text-shadow: 0 0 8px #05C7FF;
+  margin-bottom: 10px;
+}
+
+.faq-item p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Neon balls base style */
+/* Sama seperti sebelumnya untuk FAQ container, h2, faq-item, fadeInUp, dst */
+
+.neon-ball {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #05C7FF 0%, transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 12 bola neon dengan ukuran + animasi berbeda */
+.ball1 { width: 200px; height: 200px; animation: moveBall1 20s linear infinite alternate; }
+.ball2 { width: 150px; height: 150px; animation: moveBall2 25s linear infinite alternate; }
+.ball3 { width: 250px; height: 250px; animation: moveBall3 18s linear infinite alternate; }
+.ball4 { width: 100px; height: 100px; animation: moveBall4 22s linear infinite alternate; }
+.ball5 { width: 180px; height: 180px; animation: moveBall5 30s linear infinite alternate; }
+.ball6 { width: 220px; height: 220px; animation: moveBall6 28s linear infinite alternate; }
+.ball7 { width: 130px; height: 130px; animation: moveBall7 26s linear infinite alternate; }
+.ball8 { width: 170px; height: 170px; animation: moveBall8 24s linear infinite alternate; }
+.ball9 { width: 90px; height: 90px; animation: moveBall9 27s linear infinite alternate; }
+.ball10 { width: 210px; height: 210px; animation: moveBall10 23s linear infinite alternate; }
+.ball11 { width: 140px; height: 140px; animation: moveBall11 29s linear infinite alternate; }
+.ball12 { width: 160px; height: 160px; animation: moveBall12 21s linear infinite alternate; }
+
+/* Animasi random */
+@keyframes moveBall1 { from { top:-50px; left:-50px; } to { top:80%; left:90%; } }
+@keyframes moveBall2 { from { top:90%; left:10%; } to { top:0%; left:80%; } }
+@keyframes moveBall3 { from { top:50%; left:100%; } to { top:10%; left:-100px; } }
+@keyframes moveBall4 { from { top:30%; left:-100px; } to { top:70%; left:100%; } }
+@keyframes moveBall5 { from { top:0%; left:50%; } to { top:100%; left:50%; } }
+@keyframes moveBall6 { from { top:100%; left:100%; } to { top:-50px; left:-50px; } }
+@keyframes moveBall7 { from { top:20%; left:100%; } to { top:80%; left:-100px; } }
+@keyframes moveBall8 { from { top:-60px; left:80%; } to { top:90%; left:0%; } }
+@keyframes moveBall9 { from { top:100%; left:30%; } to { top:-50px; left:70%; } }
+@keyframes moveBall10 { from { top:10%; left:10%; } to { top:90%; left:90%; } }
+@keyframes moveBall11 { from { top:90%; left:90%; } to { top:10%; left:10%; } }
+@keyframes moveBall12 { from { top:50%; left:0%; } to { top:50%; left:100%; } }
+
+/* Fade in for FAQ cards */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+#blog {
+  position: relative;
+  padding: 100px 20px;
+  background: #000;
+  overflow: hidden;
+}
+
+#blog h2 {
+  color: #05C7FF;
+  font-size: 2.2em;
+  text-shadow: 0 0 10px #05C7FF;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.blog-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.blog-item {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(5, 199, 255, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.blog-item:nth-child(1) { animation-delay: 0s; }
+.blog-item:nth-child(2) { animation-delay: 0.3s; }
+.blog-item:nth-child(3) { animation-delay: 0.6s; }
+
+.blog-item h3 {
+  color: #05C7FF;
+  text-shadow: 0 0 8px #05C7FF;
+  margin-bottom: 5px;
+}
+
+.blog-date {
+  display: block;
+  color: #aaa;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.blog-item p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+#neon-lines {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+
+
+#contact {
+  position: relative;
+  padding: 100px 20px;
+  background: #000; /* sama dengan section blog */
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+#contact h2 {
+  color: #05C7FF;
+  font-size: 2.2em;
+  text-shadow: 0 0 10px #05C7FF;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-desc {
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-image img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(5, 199, 255, 0.3);
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(5, 199, 255, 0.37);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  outline: none;
+  transition: background 0.3s, border 0.3s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #05C7FF;
+}
+
+.contact-form button {
+  background: #05C7FF;
+  border: none;
+  color: #000;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.contact-form button:hover {
+  background: #0ff;
+  box-shadow: 0 0 20px #0ff;
+}
+
+
+
+#footer {
+  background: #000;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#footer p {
+  color: #aaa;
+  margin-bottom: 15px;
+  font-size: 0.95em;
+}
+
+.telegram-button {
+  display: inline-block;
+  padding: 12px 24px;
+  color: #05C7FF;
+  font-weight: bold;
+  border-radius: 12px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(5, 199, 255, 0.3);
+  box-shadow: 0 0 20px rgba(5, 199, 255, 0.2), inset 0 0 10px rgba(5, 199, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.telegram-button::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(5,199,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.telegram-button:hover::before {
+  left: 150%;
+}
+
+.telegram-button:hover {
+  color: #00ff37;
+  background: rgba(5, 199, 255, 0.1);
+  box-shadow: 0 0 30px #05C7FF, 0 0 60px #0ff, inset 0 0 20px #05C7FF;
+  border-color: rgba(5,199,255,0.6);
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">X-S.H.O.T.S</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#team">Our Team</a>
+      <a href="#resources">Resources</a>
+      <a href="#faq">FAQ</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <!-- SECTION HOME -->
+ <section id="home">
+  <div class="home-content">
+    <h4>Powered by X-S.H.O.T.S [X] Project1998 Environment </h4>
+    <h1>Welcome to the X-S.H.O.T.S Network</h1>
+    <p>
+      Jelajahi bagaimana teknologi kami merevolusi cara Anda mengelola lalu lintas dan meningkatkan efisiensi dengan trafik berkualitas. Bergabunglah dengan komunitas kami dan rasakan pengalaman baru yang inovatif!
+    </p>
+    <a href="#about" class="read-more">READ MORE</a>
+  </div>
+  <div class="gradient-bottom"></div>
+</section>
+
+
+<section id="services">
+  <div class="services-container">
+    <div class="service-item" style="animation-delay: 0s;">
+      <h3>Ekspansi Browser Pencari Trafik</h3>
+      <p>
+        Menawarkan lebih banyak pilihan browser untuk meningkatkan fleksibilitas dalam pengelolaan trafik.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.3s;">
+      <h3>Keamanan Tanpa Kebocoran IP</h3>
+      <p>
+        Perlindungan maksimal terhadap kebocoran IP, memastikan anonimitas penuh dalam setiap aktivitas.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Dukungan Komprehensif Proxy IPv4 dan IPv6</h3>
+      <p>
+        Mengintegrasikan dukungan penuh untuk proxy IPv4 dan IPv6, memberikan fleksibilitas dan kompatibilitas yang lebih luas.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Unlimited IP</h3>
+      <p>
+        Memberikan kebebasan ​penuh dengan ​akses tak ​terbatas ke jaringan ​IP, ​memungkinkan ​strategi trafik yang ​​lebih dinamis dan ​efektif.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0s;">
+      <h3>Spoofing Timezone dan ​​Realtime Timezone</h3>
+      <p>
+        Kemampuan untuk ​menyesuaikan dan ​​menyamarkan zona waktu ​dengan ​akurasi real-​time, menjaga ​​keautentikan aktivitas ​online.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.3s;">
+      <h3>User Agent Device ​Terbaru dan ​Unlimited</h3>
+      <p>
+        Menggunakan user agent ​terbaru ​dengan pilihan ​yang tidak terbatas, ​​memastikan ​kompatibilitas dengan ​​berbagai perangkat.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Login dengan Akses ​Token</h3>
+      <p>
+        Keamanan ekstra ​dengan sistem login ​​berbasis akses ​token, memastikan ​​hanya pengguna yang ​sah yang dapat ​​mengakses.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Update IP dan User ​Agent ​Bulanan</h3>
+      <p>
+        Pembaruan rutin ​setiap bulan untuk IP ​​dan user agent, ​menjaga performa dan ​​keamanan aplikasi ​tetap optimal.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0.3s;">
+      <h3>Lisensi Bulanan yang ​Fleksibel</h3>
+      <p>
+        Penawaran lisensi ​bulanan yang ​​fleksibel, memberikan ​kemudahan ​dalam ​mengelola penggunaan ​sesuai ​kebutuhan.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Update dan Inject Link ​​Terjangkau</h3>
+      <p>
+        Menyediakan layanan ​update dan ​inject link ​dengan biaya yang ​​terjangkau, menjaga ​efisiensi ​anggaran ​tanpa mengorbankan ​​kualitas.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Konsultasi Tanpa Biaya</h3>
+      <p>
+        Mendapatkan dukungan ​dari tim ahli ​melalui ​konsultasi gratis, ​memastikan ​Anda ​mendapatkan solusi ​terbaik ​untuk setiap ​tantangan yang ​dihadapi.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0s;">
+      <h3>Bimbingan Intensif ​hingga Ahli</h3>
+      <p>
+        Program bimbingan ​intensif yang ​dirancang ​untuk membantu pengguna ​​mencapai tingkat ​keahlian yang ​​diinginkan.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.3s;">
+      <h3>Kolaborasi dengan Tim ​Ahli</h3>
+      <p>
+        Membangun hubungan erat ​dengan ​tim profesional ​berpengalaman, ​​memberikan akses ke ​pengetahuan ​dan solusi ​terbaik.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Akses Eksklusif ke ​Informasi ​R &D Terbaru</h3>
+      <p>
+        Akses eksklusif ke ​informasi terbaru ​dari ​departemen Research and ​​Development, memastikan ​Anda ​selalu selangkah ​lebih maju.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Keamanan dan Privasi ​​Terjamin</h3>
+      <p>
+        Komitmen kuat terhadap ​perlindungan ​data dan ​privasi pengguna, ​dengan ​sistem keamanan ​yang terus ​diperbarui.
+      </p>
+    </div>
+        <div class="service-item" style="animation-delay: 0s;">
+      <h3>free SSD Card 240GB</h3>
+      <p>
+        Penawaran eksklusif SSD ​card 240GB ​sebagai ​bagian dari paket ​layanan ​kami, mendukung ​kinerja aplikasi ​Anda.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.3s;">
+      <h3>Pengembangan Berkala</h3>
+      <p>
+        Pembaruan dan ​peningkatan fitur ​​secara berkala, ​memastikan aplikasi ​​tetap relevan dan ​sesuai dengan ​kebutuhan ​pasar.
+      </p>
+    </div>
+    <div class="service-item" style="animation-delay: 0.6s;">
+      <h3>Menjadi Bagian dari ​Keluarga ​Kami</h3>
+      <p>
+        Bergabunglah dengan ​komunitas kami ​yang ​penuh dengan semangat ​​kemanusiaan yang adil ​dan beradab, ​di mana ​setiap anggota dihargai ​dan ​didukung.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-container">
+    <h2>About Us</h2>
+    <p>
+      Inovasi dan teknologi bertemu untuk menghadirkan solusi yang efektif dalam dunia digital. ​Kami adalah tim yang berkomitmen ​untuk menyediakan alat yang mengubah cara melihat ​dan mengelola trafik. Dengan memanfaatkan teknologi terkini dan pendekatan ​berbasis ​data, kami memberikan solusi yang dirancang untuk memenuhi kebutuhan spesifik, sambil ​menjaga integritas dan ​keakuratan. Kami adalah bagian dari Project1998 Environment Group, sebuah ekosistem inovatif yang berfokus pada pengembangan teknologi cerdas untuk solusi digital yang lebih efektif dan berkelanjutan.
+    </p>
+    <p>
+      Platform kami menawarkan kemudahan dan fleksibilitas dalam pengelolaan trafik, ​memungkinkan Anda untuk fokus pada strategi dan ​pengembangan tanpa terjebak dalam ​kompleksitas teknis. Kami memahami bahwa dalam dunia yang semakin terhubung ini, ​data dan ​analitik memainkan peran kunci dalam strategi pemasaran dan pengembangan ​bisnis. Oleh karena itu, kami menggabungkan keahlian ​teknis dengan pemahaman ​mendalam tentang kebutuhan pasar untuk menghadirkan produk yang tidak hanya ​memenuhi, tetapi melampaui ​harapan.
+    </p>
+    <p>
+      Dengan X-S.H.O.T.S NETWORK, Tidak hanya mendapatkan alat untuk menciptakan trafik, tetapi juga ​sebuah kemitraan yang didasarkan pada ​kepercayaan dan integritas. Kami berdedikasi ​untuk memberikan layanan terbaik dan mendukung Anda setiap langkah, dari ​​implementasi hingga analisis hasil. Temukan potensi baru dalam strategi Anda bersama ​kami dan rasakan perbedaan yang dapat ​dibuat oleh teknologi yang tepat.
+    </p>
+  </div>
+</section>
+
+
+
+<section id="team">
+  <div class="team-container">
+    <h2>Our Team</h2>
+    <div class="team-members">
+      <div class="team-member" style="animation-delay: 0s;">
+        <img src="images/1.jpg" alt="Kazmad">
+        <h3>OMICRON</h3>
+        <p>Founder</p>
+        <a href="https://t.me/Centaurus30" target="_blank" class="telegram-button">Contact on Telegram</a>
+      </div>
+      <div class="team-member" style="animation-delay: 0.3s;">
+        <img src="images/2.jpg" alt="Reza">
+        <h3>RZSTORE</h3>
+        <p>CEO</p>
+        <a href="https://t.me/rezawp" target="_blank" class="telegram-button">Contact on Telegram</a>
+      </div>
+      <div class="team-member" style="animation-delay: 0.6s;">
+        <img src="images/3.jpg" alt="Muhamed">
+        <h3>AHMED</h3>
+        <p>CIO</p>
+        <a href="https://t.me/username_muhamed" target="_blank" class="telegram-button">Contact on Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="resources">
+  <div class="resources-container">
+    <h2>Resources</h2>
+    <div class="resource-items">
+      <div class="resource-item" style="animation-delay: 0s;">
+        <img src="images/res1.png" alt="Resource 1">
+      </div>
+      <div class="resource-item" style="animation-delay: 0.3s;">
+        <img src="images/res2.png" alt="Resource 2">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="faq">
+  <div class="faq-container">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <h3>Apakah trafik yang dihasilkan oleh aplikasi ini terlihat alami?</h3>
+      <p>
+        Ya, trafik yang dihasilkan dirancang untuk menyerupai perilaku pengguna yang sebenarnya, sehingga terlihat lebih alami dan tidak merugikan reputasi situs kencan Anda.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Apakah ada tutorial atau panduan untuk menggunakan aplikasi ini?</h3>
+      <p>
+        Kami menyediakan panduan dan tutorial lengkap untuk membantu Anda memahami cara menggunakan aplikasi ini. Jika Anda membutuhkan bantuan lebih lanjut atau memiliki pertanyaan spesifik, jangan ragu untuk menghubungi tim kami.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Apakah aplikasi ini kompatibel dengan semua situs kencan?</h3>
+      <p>
+        Aplikasi kami dirancang untuk berfungsi dengan berbagai situs kencan, tetapi hasil dan fungsionalitasnya dapat bervariasi tergantung pada pengaturan masing-masing situs.
+      </p>
+    </div>
+
+        <div class="faq-item">
+      <h3>Apakah aplikasi ini tersedia di perangkat ​seluler?</h3>
+      <p>
+        Saat ini, aplikasi ini hanya tersedia untuk perangkat ​Windows. Kami fokus pada ​pengembangan fitur dan ​kinerja di platform ini, dan belum memiliki versi untuk ​​perangkat seluler.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Dapatkah saya menggunakan aplikasi ini ​untuk lebih dari satu ​situs kencan?</h3>
+      <p>
+        Ya, aplikasi kami memungkinkan Anda untuk ​menghasilkan trafik untuk beberapa situs ​kencan ​sekaligus, sehingga Anda dapat mengelola berbagai ​platform dengan lebih ​efisien.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Apakah aplikasi ini mengumpulkan data ​pribadi saya?</h3>
+      <p>
+        Kami menghormati privasi pengguna. Aplikasi kami ​hanya mengumpulkan data yang ​diperlukan untuk fungsi ​operasional dan analisis, dan kami tidak membagikan ​data ​pribadi Anda kepada pihak ketiga.
+      </p>
+    </div>
+        <div class="faq-item">
+      <h3>Apakah data saya aman saat menggunakan ​aplikasi ini?</h3>
+      <p>
+        Kami mengutamakan keamanan data pengguna dengan ​langkah-langkah perlindungan l​ainnya untuk ​memastikan bahwa informasi Anda tetap aman dan tidak ​dibagikan kepada p​ihak ketiga.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Apakah aplikasi ini kompatibel dengan ​semua situs kencan?</h3>
+      <p>
+        Kami mengutamakan keamanan data pengguna dengan ​langkah-langkah perlindungan l​ainnya untuk ​memastikan bahwa informasi Anda tetap aman dan tidak ​dibagikan kepada p​ihak ketiga.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Apakah ada risiko menggunakan aplikasi ini?</h3>
+      <p>
+        Kami telah merancang aplikasi kami untuk ​meminimalkan risiko, tetapi pengguna harus ​tetap ​mematuhi kebijakan dan ketentuan penggunaan dari ​situs kencan masing-masing ​untuk menghindari ​masalah.
+      </p>
+    </div>
+
+        <div class="faq-item">
+      <h3>Apakah ada batasan usia untuk ​menggunakan aplikasi ini?</h3>
+      <p>
+        Pengguna harus berusia minimal 18 tahun untuk ​menggunakan aplikasi kami, sesuai ​dengan kebijakan ​sebagian besar situs kencan. Pastikan untuk mematuhi ​aturan yang ​berlaku.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Bagaimana jika saya mengalami masalah ​teknis saat menggunakan ​aplikasi?</h3>
+      <p>
+        Jika Anda mengalami masalah teknis, silakan hubungi ​tim dukungan pelanggan kami. ​Kami siap membantu ​menyelesaikan masalah yang Anda hadapi secepat ​mungkin.
+      </p>
+    </div>
+
+
+  </div>
+
+  <!-- 12 neon balls -->
+  <div class="neon-ball ball1"></div>
+  <div class="neon-ball ball2"></div>
+  <div class="neon-ball ball3"></div>
+  <div class="neon-ball ball4"></div>
+  <div class="neon-ball ball5"></div>
+  <div class="neon-ball ball6"></div>
+  <div class="neon-ball ball7"></div>
+  <div class="neon-ball ball8"></div>
+  <div class="neon-ball ball9"></div>
+  <div class="neon-ball ball10"></div>
+  <div class="neon-ball ball11"></div>
+  <div class="neon-ball ball12"></div>
+</section>
+
+
+
+
+<section id="blog">
+  <div class="blog-container">
+    <h2>Blog</h2>
+
+    <div class="blog-item">
+      <h3>Kini Mendukung Trafik Internasional</h3>
+      <span class="blog-date">22 Agustus 2024</span>
+      <p>Kami dengan bangga mengumumkan peluncuran fitur terbaru ​yang ​memungkinkan aplikasi kami untuk menciptakan trafik ​palsu dari ​berbagai negara di seluruh dunia. Fitur ini dirancang ​untuk ​membantu pengguna yang menargetkan audiens ​internasional dan ​ingin meningkatkan visibilitas situs kencan ​mereka di berbagai ​pasar global.</p>
+      <p>Dengan dukungan trafik internasional, Anda dapat ​​menyesuaikan strategi pemasaran Anda untuk berbagai ​​wilayah, meningkatkan relevansi dan efektivitas kampanye ​​Anda.</p>
+    </div>
+
+    <div class="blog-item">
+      <h3>Studi Kasus: Bagaimana Aplikasi Kami Membantu Situs Kencan Lokal Meningkatkan Trafik hingga 150%</h3>
+      <span class="blog-date">8 Agustus 2024</span>
+      <p>Dalam studi kasus terbaru ini, kami melihat bagaimana ​aplikasi ​kami berhasil membantu sebuah situs kencan lokal ​meningkatkan ​trafik mereka hingga 150% dalam waktu kurang ​dari tiga bulan. ​Dengan menggunakan fitur canggih dari ​aplikasi kami, situs ​tersebut berhasil menarik lebih banyak ​pengguna dan ​meningkatkan interaksi di platform mereka.</p>
+      <p>Baca lebih lanjut tentang strategi yang digunakan dan ​bagaimana ​Anda juga bisa mencapai hasil yang serupa.</p>
+    </div>
+
+    <div class="blog-item">
+      <h3>Transformasi Digital: Fitur Predictive Analytics Kini Tersedia untuk Optimasi Trafik Anda</h3>
+      <span class="blog-date">1 Agustus 2024</span>
+      <p>Kami dengan bangga memperkenalkan fitur terbaru dalam ​aplikasi ​kami: Predictive Analytics. Fitur ini dirancang untuk ​membantu ​Anda memprediksi dan mengoptimalkan trafik ​situs kencan Anda ​dengan menggunakan analisis data yang ​canggih. Dengan kemampuan ​ini, Anda dapat mengantisipasi ​tren pengguna, mengatur strategi ​pemasaran yang lebih ​tepat, dan meningkatkan efektivitas ​kampanye Anda secara ​keseluruhan.</p>
+      <p>Predictive Analytics memungkinkan Anda untuk mengambil ​langkah ​proaktif dalam mengelola trafik, memastikan bahwa ​situs Anda ​selalu berada di garis depan dalam menarik dan ​mempertahankan ​pengguna.</p>
+    </div>
+        <div class="blog-item">
+      <h3>Panduan Utama: Mengoptimalkan Trafik dengan ​​Aplikasi Kami</h3>
+      <span class="blog-date">18 Agustus 2024</span>
+      <p>Mengoptimalkan trafik situs kencan Anda adalah kunci untuk ​​meningkatkan interaksi pengguna dan keberhasilan platform ​Anda. ​Dalam panduan ini, kami membahas cara ​memaksimalkan potensi ​aplikasi kami untuk menciptakan ​trafik yang realistis dan ​efektif. Kami juga memberikan tips dan ​strategi yang dapat ​membantu Anda mengarahkan trafik ke ​halaman-halaman penting dan ​meningkatkan konversi.</p>
+      <p>Jangan lewatkan panduan ini untuk mendapatkan hasil ​terbaik ​dari aplikasi Anda.</p>
+    </div>
+
+    <div class="blog-item">
+      <h3>Mengapa Trafik Palsu Dapat Membantu ​Meningkatkan ​Visibilitas dan Konversi di Situs ​Kencan</h3>
+      <span class="blog-date">28 Juli 2024</span>
+      <p>Dalam artikel ini, kami membahas peran trafik palsu dalam ​​meningkatkan visibilitas dan konversi di situs kencan. ​Meskipun ​sering dianggap kontroversial, trafik palsu yang ​dikelola ​dengan baik dapat membantu situs kencan terlihat ​lebih aktif ​dan menarik lebih banyak pengguna asli.</p>
+      <p>Kami juga menjelaskan bagaimana aplikasi kami dirancang ​untuk ​memastikan trafik palsu yang dibuat tetap relevan dan ​efektif ​tanpa merusak kredibilitas platform Anda.</p>
+    </div>
+
+    <div class="blog-item">
+      <h3>Kemitraan Baru: Kami Bekerja Sama dengan ​Platform ​Kencan Terkemuka</h3>
+      <span class="blog-date">12 Agustus 2024</span>
+      <p>Kami dengan senang hati mengumumkan kemitraan baru ​kami dengan ​beberapa platform kencan terkemuka. Kerja ​sama ini memungkinkan ​integrasi yang lebih mulus antara ​aplikasi kami dan situs-situs ​kencan tersebut, sehingga ​pengguna dapat dengan mudah mengelola ​dan ​mengoptimalkan trafik di beberapa platform sekaligus.</p>
+      <p>Kerja sama ini adalah langkah besar dalam memperkuat ​ekosistem ​digital dan memberikan lebih banyak nilai bagi ​pengguna kami.</p>
+    </div>
+
+        <div class="blog-item">
+      <h3>Pembaruan Keamanan: Kami Meningkatkan ​​Perlindungan Data Pengguna</h3>
+      <span class="blog-date">5 Agustus 2024</span>
+      <p>Keamanan data pengguna adalah prioritas utama kami. Oleh ​karena ​itu, kami baru saja meluncurkan pembaruan ​keamanan terbaru ​untuk aplikasi kami. Pembaruan ini ​mencakup data yang lebih ​kuat dan perlindungan tambahan ​terhadap ancaman, memastikan b​ahwa informasi pengguna ​tetap aman dan terlindungi.</p>
+      <p>K​ami terus berkomitmen untuk menjaga kepercayaan ​pengguna d​engan menyediakan aplikasi yang tidak hanya ​efektif tetapi j​uga aman.</p>
+    </div>
+
+    <div class="blog-item">
+      <h3>Melihat Masa Depan: Rencana Kami untuk ​​Pengembangan Fitur Baru</h3>
+      <span class="blog-date">22 Juli 2024</span>
+      <p>Saat kami menatap ke masa depan, kami ingin berbagi ​rencana ​pengembangan fitur baru untuk aplikasi kami. Kami ​sedang ​bekerja keras untuk mengembangkan fitur-fitur baru ​yang akan ​semakin meningkatkan kemampuan aplikasi kami ​dalam menciptakan ​trafik yang lebih canggih dan adaptif.</p>
+      <p>Tetaplah terhubung dengan kami untuk mendapatkan ​pembaruan ​terbaru tentang inovasi dan pengembangan yang ​akan datang.</p>
+    </div>
+  </div>
+
+  
+  
+
+  <!-- Garis neon background -->
+  <canvas id="neon-lines"></canvas>
+</section>
+
+<section id="contact">
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p class="contact-desc">
+      Untuk Respons Lebih Cepat Silahkan Hubungi Team Kami
+    </p>
+
+    <div class="contact-content">
+      <div class="contact-image">
+        <img src="images/kon.png" alt="Contact Illustration">
+      </div>
+      <form class="contact-form">
+        <input type="text" placeholder="Nama" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Username Telegram">
+        <input type="text" placeholder="Nomor WhatsApp">
+        <textarea placeholder="Pesan" rows="4" required></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-container">
+    <p>© 2025 X-S.H.O.T.S Network [X] Project1998 Environment. All Rights Reserved.</p>
+    <a href="https://t.me/Bulldokk" target="_blank" class="telegram-button">
+      Dibuat oleh BULDOKK dengan cinta dan seribu harapan
+    </a>
+  </div>
+</footer>
+
+
+
+
+
+
+
+  <script>
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    burger.addEventListener('click', () => {
+      if(navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+      }
+    });
+  </script>
+
+
+
+
+<script>
+const canvas = document.getElementById('neon-lines');
+const ctx = canvas.getContext('2d');
+
+let lines = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// Tambah jumlah garis jadi 40+
+for (let i = 0; i < 40; i++) {
+  lines.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    length: 150 + Math.random() * 250,
+    speed: 0.5 + Math.random() * 2,
+    angle: Math.random() * Math.PI * 2,
+    alpha: 0.3 + Math.random() * 0.4
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.lineWidth = 2;
+
+  lines.forEach(line => {
+    ctx.strokeStyle = `rgba(5, 199, 255, ${line.alpha})`;
+    ctx.beginPath();
+    ctx.moveTo(line.x, line.y);
+    ctx.lineTo(
+      line.x + Math.cos(line.angle) * line.length,
+      line.y + Math.sin(line.angle) * line.length
+    );
+    ctx.stroke();
+
+    // Update posisi
+    line.x += Math.cos(line.angle) * line.speed;
+    line.y += Math.sin(line.angle) * line.speed;
+
+    // Reset kalau keluar layar
+    if (
+      line.x < -line.length || 
+      line.x > canvas.width + line.length || 
+      line.y < -line.length || 
+      line.y > canvas.height + line.length
+    ) {
+      line.x = Math.random() * canvas.width;
+      line.y = Math.random() * canvas.height;
+      line.angle = Math.random() * Math.PI * 2;
+      line.alpha = 0.3 + Math.random() * 0.4;
+    }
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
